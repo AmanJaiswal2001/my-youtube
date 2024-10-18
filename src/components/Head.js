@@ -9,22 +9,23 @@ function Head() {
 const[searchQuery,setSearchQuery]=useState("");
 const[suggetion,setSuggetion]=useState([]);
 const[showSuggetion,setShowSuggetion]=useState(false);
-
-const searchCache=useSelector((store)=>store.search)
 const dispatch =useDispatch();
+const searchCache=useSelector((store)=>store.search)
 
+console.log(searchCache);
 
 //learn
 useEffect(()=>{
     const timer=setTimeout(()=>{
         if(searchCache[searchQuery]){
-            setSuggetion(searchCache[searchQuery])
+            setSuggetion(searchCache[searchQuery]);
         }
         else{
         
         getSearchSuggetion();
         
         }
+
     },200);
     return()=>{
         clearTimeout(timer);
